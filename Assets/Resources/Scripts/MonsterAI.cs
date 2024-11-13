@@ -56,7 +56,11 @@ public class MonsterAI : MonoBehaviour
     void AttackState() {
         //moving = true;
         //moveToward = playerCharacter.transform.position;
+        
+        //
         monster.MoveToward(playerCharacter.transform.position);
+        //
+
         monster.AimWeapon(playerCharacter.transform);
         if(stateTime == 0) {
             currStateString = "AttackState";

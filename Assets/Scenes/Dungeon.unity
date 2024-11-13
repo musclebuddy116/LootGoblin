@@ -744,7 +744,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -986,36 +986,36 @@ PrefabInstance:
       objectReference: {fileID: 1929976685}
     - target: {fileID: 2909069778323684301, guid: f493f3e91426c5a42af2d5c916b5bfe7, type: 3}
       propertyPath: roomPrefabs.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2909069778323684301, guid: f493f3e91426c5a42af2d5c916b5bfe7, type: 3}
       propertyPath: roomPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 155445543241190291, guid: f429fb39c04ae604fb9762f74f4e2be2, type: 3}
+      objectReference: {fileID: 155445543241190291, guid: aefd7fb8e6e5d804e875c7a3bdaa94fc, type: 3}
     - target: {fileID: 2909069778323684301, guid: f493f3e91426c5a42af2d5c916b5bfe7, type: 3}
       propertyPath: roomPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 6606723329139402788, guid: 2f6b1d947fbd65248bf9b08157c50d37, type: 3}
+      objectReference: {fileID: 6606723329139402788, guid: 451434b75334263478be16a72228c4f6, type: 3}
     - target: {fileID: 2909069778323684301, guid: f493f3e91426c5a42af2d5c916b5bfe7, type: 3}
       propertyPath: roomPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 3709074011927550253, guid: 19fbafe69e62d184d8d9e1a78b85b5ac, type: 3}
+      objectReference: {fileID: 3709074011927550253, guid: 85d2bab383abba643b53cbfcbed47fbc, type: 3}
     - target: {fileID: 2909069778323684301, guid: f493f3e91426c5a42af2d5c916b5bfe7, type: 3}
       propertyPath: roomPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 399919574144824002, guid: 61cd16f38a58b374b968a607b384a773, type: 3}
+      objectReference: {fileID: 399919574144824002, guid: 834e5f0a8eaca8e4ba5687343eebc512, type: 3}
     - target: {fileID: 2909069778323684301, guid: f493f3e91426c5a42af2d5c916b5bfe7, type: 3}
       propertyPath: roomPrefabs.Array.data[4]
       value: 
-      objectReference: {fileID: 4477670789100769075, guid: e8b37b5d327ee2e469826b9e7c236d1c, type: 3}
+      objectReference: {fileID: 4477670789100769075, guid: 6dafd79d781fe3448b388fdda479929e, type: 3}
     - target: {fileID: 2909069778323684301, guid: f493f3e91426c5a42af2d5c916b5bfe7, type: 3}
       propertyPath: roomPrefabs.Array.data[5]
       value: 
-      objectReference: {fileID: 5889821679524467730, guid: 9cb64172be6f2ed498ada68e6e73bd92, type: 3}
+      objectReference: {fileID: 1174829736618705278, guid: 4a469557b0c6e11428e0ac68d7aa1a28, type: 3}
     - target: {fileID: 2909069778323684301, guid: f493f3e91426c5a42af2d5c916b5bfe7, type: 3}
       propertyPath: roomPrefabs.Array.data[6]
       value: 
-      objectReference: {fileID: 5889821679524467730, guid: 9cb64172be6f2ed498ada68e6e73bd92, type: 3}
+      objectReference: {fileID: 5889821679524467730, guid: 74ef1b24b75c7fd4b9d75576c719b4ec, type: 3}
     - target: {fileID: 2909069778323684301, guid: f493f3e91426c5a42af2d5c916b5bfe7, type: 3}
       propertyPath: roomPrefabs.Array.data[7]
       value: 

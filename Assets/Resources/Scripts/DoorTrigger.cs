@@ -11,16 +11,16 @@ public class DoorTrigger : MonoBehaviour
     void Awake()
     {
         //THIS ASSUMES THAT DOOR IS ONLY EVER ONE CARDINAL DIRECTION
-        if(transform.localPosition.y > 0) {
+        if((int)transform.localPosition.y > 0) {
             //myCardinal = DoorCardinal.North;
             myCardinalInt = 0;
-        } else if(transform.localPosition.x > 0) {
+        } else if((int)transform.localPosition.x > 0) {
             //myCardinal = DoorCardinal.East;
             myCardinalInt = 1;
-        } else if(transform.localPosition.y < 0) {
+        } else if((int)transform.localPosition.y < 0) {
             //myCardinal = DoorCardinal.South;
             myCardinalInt = 2;
-        } else if(transform.localPosition.x < 0) {
+        } else if((int)transform.localPosition.x < 0) {
             //myCardinal = DoorCardinal.West;
             myCardinalInt = 3;
         }

@@ -199,4 +199,8 @@ public class Character : MonoBehaviour
     public Inventory GetInventory() {
         return inventory;
     }
+
+    public float GetSpeed() {
+        return speed;
+    }
 }

@@ -15,10 +15,7 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] List<GameObject> roomPrefabs;
     [SerializeField] GameObject currRoom;
     Room currRoomRoom;
-    //[SerializeField] GameObject northRoom, eastRoom, southRoom, westRoom;
     [SerializeField] GameObject[] rooms = new GameObject[4]; //NESW, adjusted for room rotations
-    //[SerializeField] Room northRoomRoom, eastRoomRoom, southRoomRoom, westRoomRoom;
-    //[SerializeField] DoorTrigger.DoorCardinal atDoorCardinal;
     [SerializeField] int atDoor;
     bool playerAtDoor;
     bool exiting = false;
@@ -298,15 +295,16 @@ public class DungeonManager : MonoBehaviour
         }
         Destroy(currRoom);
         rotations = 0;
-        Vector3 playerPos = Vector3.zero;
         currRoomRoom = room.GetComponent<Room>();
-        float x = (doorCardinal == 1) ? -3.5f : (doorCardinal == 3) ? 3.5f : 0;
-        float y = (doorCardinal == 0) ? -3.5f : (doorCardinal == 2) ? 3.5f : 0;
-        playerPos = new Vector3(x,y,0);
+        float x = (doorCardinal == 1) ? -8.5f : (doorCardinal == 3) ? 8.5f : 0;
+        float y = (doorCardinal == 0) ? -8.5f : (doorCardinal == 2) ? 8.5f : 0;
+        Vector3 playerPos = new Vector3(x,y,0);
+        int rSign = Random.Range(0,2);
+        if(rSign == 0) { rSign = -1; }
         int i;
         for(i = 0; i < 4; i++) {
-            if(currRoomRoom.GetExit((doorCardinal + 2 + i) % 4)) {
-                rotations = i;
+            if(currRoomRoom.GetExit((doorCardinal + 2 + 4 + (i * rSign)) % 4)) {
+                rotations = (4 + (i * rSign)) % 4;
                 break;
             }
         }
