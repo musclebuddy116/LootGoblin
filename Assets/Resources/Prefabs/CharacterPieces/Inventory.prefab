@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f222ed7a999d7684d827302fbd319a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 0}
+  items: []
   heldWeapon: {fileID: 0}
+  coins: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6c3835a066b6ebc42afb3601b73dc0cd
+guid: 02925fe2adebda64585f7ce74ba5d7e2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -46,8 +46,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 8
+  spritePivot: {x: 1, y: 0}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -104,15 +104,15 @@ TextureImporter:
         y: 16
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c373591bc25650f4bb7fabeffdb70251
-      internalID: -2075997952
+      spriteID: 77df3b894532e514a9fe9077623ded6b
+      internalID: -302850541
       vertices: []
       indices: 
       edges: []
@@ -125,15 +125,15 @@ TextureImporter:
         y: 16
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0963aa8f353c1234bb2086a3df3d31c5
-      internalID: -1851162479
+      spriteID: ff279ef242c1da34ca2f8cb493019556
+      internalID: 541700898
       vertices: []
       indices: 
       edges: []
@@ -146,15 +146,15 @@ TextureImporter:
         y: 0
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e55fd002107f9f248a9a5202d7bdb862
-      internalID: -962187158
+      spriteID: 4a5eec446dc55c34ca6efc053acdb5b4
+      internalID: 1307733277
       vertices: []
       indices: 
       edges: []
@@ -170,9 +170,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Weapons v1_0: -2075997952
-      Weapons v1_1: -1851162479
-      Weapons v1_2: -962187158
+      Weapons v1_0: -302850541
+      Weapons v1_1: 541700898
+      Weapons v1_2: 1307733277
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

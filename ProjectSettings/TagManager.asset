@@ -48,6 +48,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: WeaponTrails
+    uniqueID: 4174593201
+    locked: 0
+  - name: Weapons
+    uniqueID: 1729480201
+    locked: 0
   - name: Sprites
     uniqueID: 3997160717
     locked: 0

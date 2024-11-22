@@ -15,6 +15,9 @@ public class Room : MonoBehaviour
     [SerializeField] bool westExit = false;
     [SerializeField] bool[] exits = new bool[4];
 
+    [Header("Chests")]
+    [SerializeField] List<TreasureChest> chests;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,14 @@ public class Room : MonoBehaviour
 
     public void RegisterMonster() {
         monsterCount += 1;
+    }
+
+    public void RegisterChest(TreasureChest chest) {
+        chests.Add(chest);
+    }
+
+    public void ClearChests() {
+        chests.Clear();
     }
 
     public void MonsterDead() {

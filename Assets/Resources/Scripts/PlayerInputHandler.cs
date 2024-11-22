@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerInputHandler : MonoBehaviour
 {
     [SerializeField] Character playerCharacter;
+    [SerializeField] float scale = .1f;
 
     // Update is called once per frame
     void Update()
@@ -15,10 +17,14 @@ public class PlayerInputHandler : MonoBehaviour
             playerCharacter.Dodge();
         }
         if(Input.GetKeyDown(KeyCode.E)) {
-            DungeonManager.singleton.ExitRoom();
+            DungeonManager.singleton.Interact();
+            // DungeonManager.singleton.ExitRoom();
         }
         if(Input.GetMouseButtonDown(0)) {
             playerCharacter.Attack();
+        }
+        if(Input.mouseScrollDelta.y != 0) {
+            playerCharacter.GetInventory().EquipNextWeapon((int)(Input.mouseScrollDelta.y * scale));
         }
     }
 

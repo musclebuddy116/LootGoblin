@@ -11,6 +11,7 @@ public class MonsterAI : MonoBehaviour
 
     [Header("Config")]
     [SerializeField] float sightDistance = 5;
+    [SerializeField] float meleeDistance = 1.5f;
 
     delegate void AIState();
     AIState currState;
@@ -48,12 +49,12 @@ public class MonsterAI : MonoBehaviour
         }
         //moving = false;
         if(CanSeeTarget()) {
-            ChangeState(AttackState);
+            ChangeState(ChaseState);
             return;
         }
     }
 
-    void AttackState() {
+    void ChaseState() {
         //moving = true;
         //moveToward = playerCharacter.transform.position;
         
@@ -63,17 +64,35 @@ public class MonsterAI : MonoBehaviour
 
         monster.AimWeapon(playerCharacter.transform);
         if(stateTime == 0) {
-            currStateString = "AttackState";
+            currStateString = "ChaseState";
         }
 
-        if(Vector3.Distance(monster.transform.position, playerCharacter.transform.position) < 1) {
+        if(Vector3.Distance(monster.transform.position, playerCharacter.transform.position) < meleeDistance) {
             //monster.MoveToward(moveToward);
-            monster.Attack();
+            ChangeState(AttackState);
+            return;
+            // monster.Attack();
         }
         //ATTACK
 
         if(!CanSeeTarget()) {
             ChangeState(IdleState);
+            return;
+        }
+    }
+
+    void AttackState() {
+        if(stateTime == 0) {
+            currStateString = "AttackState";
+        }
+        monster.Stop();
+        monster.AimWeapon(playerCharacter.transform);
+        if(!monster.CanAttack()) {
+            return;
+        }
+        monster.WindUp();
+        if(Vector3.Distance(monster.transform.position, playerCharacter.transform.position) > meleeDistance) {
+            ChangeState(ChaseState);
             return;
         }
     }

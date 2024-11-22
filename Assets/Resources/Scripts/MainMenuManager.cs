@@ -13,7 +13,8 @@ public class MainMenuManager : MonoBehaviour
 
     IEnumerator DelayLeaveMenuAfterFade() {
         yield return new WaitUntil(()=>mainMenuScreenFader.DoneFadingToColor());
-        SceneManager.LoadScene("Dungeon");
+        // SceneManager.LoadScene("Dungeon");
+        SceneManager.LoadScene("Shop");
     }
 
     public void QuitGame() {

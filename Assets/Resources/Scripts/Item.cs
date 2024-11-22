@@ -1,8 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] float value = 1;
+    int id = -1;
+    // int identifier = -1;
+    [SerializeField] protected int value = 1;
+    [SerializeField] float dropChance = .01f;
+
+    public void SetId(int id) {
+        this.id = id;
+        // identifier = ItemManager.singleton.Identify();
+    }
+
+    public int GetId() {
+        return id;
+    }
+    
+    public String GetName() {
+        return name;
+    }
+
+    public int GetValue() {
+        return value;
+    }
+
 }

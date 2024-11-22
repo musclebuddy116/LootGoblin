@@ -9,17 +9,26 @@ public class DungeonManager : MonoBehaviour
 {
     public static DungeonManager singleton;
 
-    [SerializeField] Character pc;
+    [SerializeField] Character playerCharacter;
     [SerializeField] ScreenFader dungeonScreenFader;
+    
     [Header("Rooms")]
     [SerializeField] List<GameObject> roomPrefabs;
     [SerializeField] GameObject currRoom;
     Room currRoomRoom;
     [SerializeField] GameObject[] rooms = new GameObject[4]; //NESW, adjusted for room rotations
+    int rotations = 0;
+    bool exiting = false;
+    
+    [Header("Doors")]
     [SerializeField] int atDoor;
     bool playerAtDoor;
-    bool exiting = false;
-    int rotations = 0;
+    
+    [Header("Chests")]
+    [SerializeField] TreasureChest atChest;
+    bool playerAtChest;
+
+    
 
     void Awake()
     {
@@ -41,8 +50,9 @@ public class DungeonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EnterRoom(roomPrefabs[0], 2);
-        // pc.transform.position = Vector3.zero;
+        playerCharacter.GetInventory().LoadInventory("playerInventory");
+        EnterRoom(roomPrefabs[0], 0);
+        // playerCharacter.transform.position = Vector3.zero;
         // currRoom = Instantiate(roomPrefabs[0], Vector3.zero, Quaternion.identity);
         // currRoomRoom = currRoom.GetComponent<Room>();
         //RollRoom();
@@ -101,6 +111,10 @@ public class DungeonManager : MonoBehaviour
         currRoomRoom.RegisterMonster();
     }
 
+    public void RegisterChest(TreasureChest chest) {
+        currRoomRoom.RegisterChest(chest);
+    }
+
     public void MonsterDead() {
         currRoomRoom.MonsterDead();
     }
@@ -123,11 +137,25 @@ public class DungeonManager : MonoBehaviour
         playerAtDoor = isAtDoor;
     }
 
+    public void SetAtChest(TreasureChest chest, bool isAtChest) {
+        atChest = chest;
+        playerAtChest = isAtChest;
+    }
+
+    public void Interact() {
+        if(exiting) {
+            return;
+        }
+        if(playerAtDoor) { ExitRoom(); }
+        else if(playerAtChest) { OpenChest(atChest); }
+    }
+    
     public void ExitRoom() {
         if(!playerAtDoor || exiting) {
             return;
         }
         exiting = true;
+        currRoomRoom.ClearChests();
         EnterRoom(rooms[atDoor], atDoor);
         /*switch(atDoor) {
             case 0:
@@ -166,6 +194,10 @@ public class DungeonManager : MonoBehaviour
                 break;
         }*/
         exiting = false;
+    }
+
+    void OpenChest(TreasureChest chest) {
+        chest.Open(playerCharacter);
     }
 
     /*public void EnterRoom(GameObject room, DoorTrigger.DoorCardinal doorCardinal) {
@@ -223,7 +255,7 @@ public class DungeonManager : MonoBehaviour
                 }
                 break;
         }
-        pc.transform.position = playerPos;
+        playerCharacter.transform.position = playerPos;
         currRoom = Instantiate(room, Vector3.zero, Quaternion.Euler(0,0,90*rotations));
         RollRoom();
     }*/
@@ -283,13 +315,13 @@ public class DungeonManager : MonoBehaviour
                 }
                 break;
         }
-        pc.transform.position = playerPos;
+        playerCharacter.transform.position = playerPos;
         currRoom = Instantiate(room, Vector3.zero, Quaternion.Euler(0,0,90*rotations));
         RollRoom();
     }*/
 
     public void EnterRoom(GameObject room, int doorCardinal) {
-        if(pc.GetInventory().GetCoins() >= 10) {
+        if(playerCharacter.GetInventory().GetCoins() >= 10) {
             WinGame();
             return;
         }
@@ -317,18 +349,18 @@ public class DungeonManager : MonoBehaviour
                 rotations = 3;
             }
         }*/
-        pc.transform.position = playerPos;
+        playerCharacter.transform.position = playerPos;
         currRoom = Instantiate(room, Vector3.zero, Quaternion.Euler(0,0,90*rotations));
         currRoomRoom = currRoom.GetComponent<Room>();
         RollRoom();
     }
 
     public void GrantCoins (int coins) {
-        pc.GetInventory().AddCoins(coins);
+        playerCharacter.GetInventory().AddCoins(coins);
     }
 
     public Character GetPC() {
-        return pc;
+        return playerCharacter;
     }
 
     public GameObject GetCurrRoom() {
