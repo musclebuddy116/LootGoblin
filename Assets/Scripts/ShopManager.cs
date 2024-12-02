@@ -23,6 +23,8 @@ public class ShopManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerInventory.LoadItems(Strings.playerItemsString);
+        playerInventory.LoadCoins(Strings.playerCoinsString);
         int numItems = 12;
         int row = 0, column = 0, colSide = -1;
         int i = 0;
@@ -51,8 +53,13 @@ public class ShopManager : MonoBehaviour
     }
 
     public void ExitShop() {
-        playerInventory.SaveInventory("playerInventory");
+        playerInventory.SaveItems(Strings.playerItemsString);
+        playerInventory.SaveCoins(Strings.playerCoinsString);
         SceneManager.LoadScene("Dungeon");
+    }
+
+    public Inventory GetInventory() {
+        return playerInventory;
     }
 
 }

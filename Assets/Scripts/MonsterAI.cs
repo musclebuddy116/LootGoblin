@@ -86,15 +86,16 @@ public class MonsterAI : MonoBehaviour
             currStateString = "AttackState";
         }
         monster.Stop();
-        monster.AimWeapon(playerCharacter.transform);
+        // monster.AimWeapon(playerCharacter.transform);
+        monster.QuickAim(playerCharacter.transform);
         if(!monster.CanAttack()) {
             return;
         }
-        monster.WindUp();
         if(Vector3.Distance(monster.transform.position, playerCharacter.transform.position) > meleeDistance) {
             ChangeState(ChaseState);
             return;
         }
+        monster.WindUp();
     }
 
     void AITick() {

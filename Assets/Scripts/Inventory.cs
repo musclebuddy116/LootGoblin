@@ -94,12 +94,15 @@ public class Inventory : MonoBehaviour
     }*/
 
     public void BuyItem(Item item) {
+        if(coins < item.GetValue()) {
+            return;
+        }
         coins -= item.GetValue();
         AddItem(item);
     }
 
-    public void SaveInventory(string key) {
-        SaveLoad.SetfileName("Inventory");
+    public void SaveItems(string key) {
+        SaveLoad.SetfileName(Strings.inventoryFileName);
         string itemStr = "";
         if(items.Count > 0) { //Grabbing first for clean item separation
             itemStr += items[0].GetId().ToString();
@@ -110,6 +113,19 @@ public class Inventory : MonoBehaviour
         }
 
         SaveLoad.SaveString(key, itemStr);
+        SaveLoad.Flush();
+    }
+
+    public void SaveItemsEmpty(string key) {
+        SaveLoad.SetfileName(Strings.inventoryFileName);
+        string itemStr = "-1";
+        SaveLoad.SaveString(key, itemStr);
+        SaveLoad.Flush();
+    }
+
+    public void SaveCoins (string key) {
+        SaveLoad.SetfileName(Strings.inventoryFileName);
+        SaveLoad.SaveInt(key, coins);
         SaveLoad.Flush();
     }
 
@@ -129,17 +145,28 @@ public class Inventory : MonoBehaviour
         SaveLoad.Flush();
     }*/
 
-    public void LoadInventory(string key) {
-        SaveLoad.SetfileName("Inventory");
+    public void LoadItems(string key) {
+        SaveLoad.SetfileName(Strings.inventoryFileName);
         SaveLoad.LoadFromFile();
         int[] ids = SaveLoad.LoadIntList(key);
+        if(ids.Length == 1 && ids[0] == -1) {
+            return;
+        }
         int i;
         for(i = 0; i < ids.Length; i++) {
             Item item = Instantiate(ItemManager.singleton.GetItem(ids[i]), Vector3.zero, Quaternion.identity, this.transform).GetComponent<Item>();
             item.SetId(ids[i]);
             AddItem(item);
-            if(items[currWeaponIndex] != item) { item.gameObject.SetActive(false); }
+            //if(items[currWeaponIndex] != item) { 
+                item.gameObject.SetActive(false);
+                //}
         }
+    }
+    
+    public void LoadCoins(string key) {
+        SaveLoad.SetfileName(Strings.inventoryFileName);
+        SaveLoad.LoadFromFile();
+        coins = SaveLoad.LoadInt(key);
     }
 
     /*public void LoadInventory(string key) {

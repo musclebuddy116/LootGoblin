@@ -12,7 +12,12 @@ public class CoinWindow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int coinAmt = playerInputHandler.GetPlayerCharacter().GetInventory().GetCoins();
+        int coinAmt;
+        if(playerInputHandler == null) {
+            coinAmt = ShopManager.singleton.GetInventory().GetCoins();
+        } else {
+            coinAmt = playerInputHandler.GetPlayerCharacter().GetInventory().GetCoins();
+        }
         coinText.text = coinAmt.ToString() + " G";
     }
 }

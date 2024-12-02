@@ -81,8 +81,23 @@ public class Character : MonoBehaviour
         AimWeapon(targetTransform.position);
     }
 
+    public void QuickAim(Transform targetTransform) {
+        QuickAim(targetTransform.position);
+    }
+
+    public void QuickAim(Vector3 aimPos) {
+        if(attacking || attackCooldown || weapon == null || windingUp) {
+            return;
+        }
+        weapon.transform.position = attackPoint.position;
+        weapon.gameObject.SetActive(true);
+        Quaternion goalRotation = Quaternion.LookRotation(Vector3.forward, aimPos - aimerTransform.position);
+        aimerTransform.rotation = goalRotation;
+        weapon.transform.rotation = aimerTransform.rotation;
+    }
+
     public void AimWeapon(Vector3 aimPos) {
-        if(attacking || attackCooldown || weapon == null) {
+        if(attacking || attackCooldown || weapon == null || windingUp) {
             return;
         }
         weapon.transform.position = attackPoint.position;
@@ -91,9 +106,10 @@ public class Character : MonoBehaviour
         Quaternion currRotation = aimerTransform.rotation;
 
         aimerTransform.rotation = Quaternion.Lerp(currRotation, goalRotation, Time.deltaTime * rotationSpeed);
-        goalRotation = aimerTransform.rotation;
-        currRotation = weapon.transform.rotation;
-        weapon.transform.rotation = Quaternion.Lerp(currRotation, goalRotation, Time.deltaTime * rotationSpeed);
+        // goalRotation = aimerTransform.rotation;
+        // currRotation = weapon.transform.rotation;
+        // weapon.transform.rotation = Quaternion.Lerp(currRotation, goalRotation, Time.deltaTime * rotationSpeed);
+        weapon.transform.rotation = aimerTransform.rotation;
     }
 
     public void Move(Vector3 newMovement) {
@@ -125,13 +141,13 @@ public class Character : MonoBehaviour
             float timer = 0;
             while(timer < windupTime/2) {
                 timer += Time.deltaTime;
-                weapon.transform.Rotate(new Vector3(0,0,Time.deltaTime/windupTime * 30));
+                weapon.transform.Rotate(new Vector3(0,0,Time.deltaTime/(windupTime/2) * 60));
                 yield return null;
             }
             timer = 0;
             while(timer < windupTime/2) {
                 timer += Time.deltaTime;
-                weapon.transform.Rotate(new Vector3(0,0,Time.deltaTime/windupTime * -30));
+                weapon.transform.Rotate(new Vector3(0,0,Time.deltaTime/(windupTime/2) * -60));
                 yield return null;
             }
             windingUp = false;

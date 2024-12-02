@@ -50,7 +50,8 @@ public class DungeonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerCharacter.GetInventory().LoadInventory("playerInventory");
+        playerCharacter.GetInventory().LoadItems(Strings.playerItemsString);
+        playerCharacter.GetInventory().LoadCoins(Strings.playerCoinsString);
         EnterRoom(roomPrefabs[0], 0);
         // playerCharacter.transform.position = Vector3.zero;
         // currRoom = Instantiate(roomPrefabs[0], Vector3.zero, Quaternion.identity);
@@ -120,6 +121,8 @@ public class DungeonManager : MonoBehaviour
     }
 
     public void PlayerDead() {
+        playerCharacter.GetInventory().SaveItemsEmpty(Strings.playerItemsString);
+        playerCharacter.GetInventory().SaveCoins(Strings.playerCoinsString);
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -321,10 +324,10 @@ public class DungeonManager : MonoBehaviour
     }*/
 
     public void EnterRoom(GameObject room, int doorCardinal) {
-        if(playerCharacter.GetInventory().GetCoins() >= 10) {
+        /*if(playerCharacter.GetInventory().GetCoins() >= 10) {
             WinGame();
             return;
-        }
+        }*/
         Destroy(currRoom);
         rotations = 0;
         currRoomRoom = room.GetComponent<Room>();
