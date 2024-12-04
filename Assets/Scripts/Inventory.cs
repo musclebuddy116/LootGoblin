@@ -93,12 +93,21 @@ public class Inventory : MonoBehaviour
         items.Remove(item);
     }*/
 
-    public void BuyItem(Item item) {
+    /*public void BuyItem(Item item) {
         if(coins < item.GetValue()) {
-            return;
+            return -1;
         }
         coins -= item.GetValue();
         AddItem(item);
+    }*/
+
+    public int BuyItem(Item item) {
+        if(coins < item.GetValue()) {
+            return -1;
+        }
+        coins -= item.GetValue();
+        AddItem(item);
+        return 0;
     }
 
     public void SaveItems(string key) {
@@ -106,6 +115,8 @@ public class Inventory : MonoBehaviour
         string itemStr = "";
         if(items.Count > 0) { //Grabbing first for clean item separation
             itemStr += items[0].GetId().ToString();
+        } else {
+            itemStr = "-1";
         }
         int i;
         for(i = 1; i < items.Count; i++) {
@@ -149,10 +160,11 @@ public class Inventory : MonoBehaviour
         SaveLoad.SetfileName(Strings.inventoryFileName);
         SaveLoad.LoadFromFile();
         int[] ids = SaveLoad.LoadIntList(key);
-        if(ids.Length == 1 && ids[0] == -1) {
+        int i;
+        if(ids.Length == 0 || ids[0] == -1) {
             return;
         }
-        int i;
+        // int i;
         for(i = 0; i < ids.Length; i++) {
             Item item = Instantiate(ItemManager.singleton.GetItem(ids[i]), Vector3.zero, Quaternion.identity, this.transform).GetComponent<Item>();
             item.SetId(ids[i]);

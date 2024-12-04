@@ -41,7 +41,9 @@ public class ItemManager : MonoBehaviour
     /// </summary>
     /// <returns> The random Item, already instantiated </returns>
     public Item GetRandomItem() {
-        Item item = Instantiate(items[Random.Range(0, items.Count)]).GetComponent<Item>();
+        int index = Random.Range(0, items.Count);
+        Item item = Instantiate(items[index]).GetComponent<Item>();
+        item.SetId(index);
         item.gameObject.SetActive(false);
         // Item item = items[Random.Range(0, items.Count)];
         if(!(item.GetType() == typeof(Weapon))) {
@@ -51,10 +53,10 @@ public class ItemManager : MonoBehaviour
         float debuffRoll = Random.Range(0,1f);
         float buffRoll = Random.Range(0,1f);
         if(debuffRoll < debuffChance) {
-            weapon.Debuff();
+            weapon.Buff(-1);
         }
         if(buffRoll < buffChance) {
-            weapon.Buff();
+            weapon.Buff(1);
         }
         return weapon;
     }

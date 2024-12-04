@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: speed
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: -8161286032758126338, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8161286032758126338, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 4624741934101512602}
+    - target: {fileID: -8161286032758126338, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: maxDurability
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5349876291484370884, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 034816bd8d7b833439d288c6c97867ca, type: 3}
     - target: {fileID: 6876590335387764950, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
       propertyPath: m_Name
       value: Sword
@@ -65,3 +81,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+--- !u!82 &4624741934101512602 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5349876291484370884, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+  m_PrefabInstance: {fileID: 725350489457985118}
+  m_PrefabAsset: {fileID: 0}

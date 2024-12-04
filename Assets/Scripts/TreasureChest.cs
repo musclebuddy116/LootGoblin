@@ -8,6 +8,8 @@ public class TreasureChest : MonoBehaviour
     [SerializeField] bool atChest = false;
     [SerializeField] int minAwardCoins = 3;
     [SerializeField] int maxAwardCoins = 10;
+    [SerializeField] AudioSource audioSource;
+    bool opened = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,9 +44,12 @@ public class TreasureChest : MonoBehaviour
     /// </summary>
     /// <param name="character"> The Character opening the chest, to give the loot to</param>
     public void Open(Character character) {
+        if(opened) { return; }
+        opened = true;
+        audioSource.Play();
         character.GetInventory().AddCoins(Random.Range(minAwardCoins, maxAwardCoins+1));
         Item item = ItemManager.singleton.GetRandomItem();
         character.GetInventory().AddItem(item);
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, .4f);
     }
 }

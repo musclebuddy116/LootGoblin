@@ -123,7 +123,7 @@ public class DungeonManager : MonoBehaviour
     public void PlayerDead() {
         playerCharacter.GetInventory().SaveItemsEmpty(Strings.playerItemsString);
         playerCharacter.GetInventory().SaveCoins(Strings.playerCoinsString);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(Strings.mainMenuScene);
     }
 
     public void WinGame() {

@@ -8,6 +8,12 @@ public class UIMenu : MonoBehaviour
 
     void Awake()
     {
+        int newGame = PlayerPrefs.GetInt(Strings.newGame,0);
+        if(newGame == 0 ) {
+            PlayerPrefs.SetInt(Strings.newGame, 1);
+            closedByDefault = false;
+            OpenMenu();
+        }
         if(closedByDefault) {
             CloseMenu();
         }
@@ -15,6 +21,11 @@ public class UIMenu : MonoBehaviour
     
     public void OpenMenu() {
         GetComponent<Canvas>().enabled = true;
+        
+        //FIXME: Do not ship!!!
+        // PlayerPrefs.SetInt(Strings.newGame, 1);
+
+
     }
 
     public void CloseMenu() {

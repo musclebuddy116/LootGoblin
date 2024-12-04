@@ -364,8 +364,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1555611969}
     - target: {fileID: 1197992849409749424, guid: b0628135b9681594198110ef04fca996, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197992849409749424, guid: b0628135b9681594198110ef04fca996, type: 3}
       propertyPath: dodgeSpeed
       value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197992849409749424, guid: b0628135b9681594198110ef04fca996, type: 3}
+      propertyPath: deathFadeTime
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1197992849409749424, guid: b0628135b9681594198110ef04fca996, type: 3}
       propertyPath: dodgeRollSpeed
@@ -426,6 +434,10 @@ PrefabInstance:
     - target: {fileID: 6691771350194993104, guid: b0628135b9681594198110ef04fca996, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942278861865434542, guid: b0628135b9681594198110ef04fca996, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8034519855860468854, guid: b0628135b9681594198110ef04fca996, type: 3}
       propertyPath: m_LocalPosition.x

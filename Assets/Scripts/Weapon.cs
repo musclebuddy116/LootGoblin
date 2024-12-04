@@ -8,7 +8,7 @@ public class Weapon : Item
     [Header("Weapon")]
     [SerializeField] float damage = 5;
     // [SerializeField] float range = .35f;
-    [SerializeField] float speed = .5f;
+    [SerializeField] float swingTime = .5f;
     [SerializeField] float knockback = 1;
     [SerializeField] float critChance = .05f;
     [SerializeField] float maxDurability = 10;
@@ -18,14 +18,37 @@ public class Weapon : Item
     [SerializeField] TrailRenderer trail;
     bool canDamage = false;
     
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+
+    [Header("ProceduralGeneration")]
+    [SerializeField] float minDamageMod = 1;
+    [SerializeField] float maxDamageMod = 3;
+    [SerializeField] float minSwingTimeMod = .05f;
+    [SerializeField] float maxSwingTimeMod = .15f;
+    [SerializeField] float minCritChanceMod = .02f;
+    [SerializeField] float maxCritChanceMod = .05f;
+    [SerializeField] int minDurabilityMod = 1;
+    [SerializeField] int maxDurabilityMod = 3;
+
+    
     
     public float GetDamage() {  return damage;  }
     // public float GetRange() {  return range;  }
-    public float GetSpeed() {  return speed;  }
+    public float GetSpeed() {  return swingTime;  }
 
-    void Start()
+    // void Start()
+    // {
+    //     currDurability = maxDurability;
+    // }
+
+    void Awake()
     {
         currDurability = maxDurability;
+    }
+
+    public void Swing() {
+        audioSource.Play();
     }
 
     public void CanDamage(bool can) {
@@ -95,7 +118,19 @@ public class Weapon : Item
         }*/
     }
 
-    public void Buff() {
-        
+    /// <summary>
+    /// Raises or lowers a stat based on sign value
+    /// Then alters weapon value accordingly
+    /// </summary>
+    /// <param name="sign"> 1 for buff, -1 for debuff </param>
+    
+    public void Buff(int sign) {
+        float buffRoll = Random.Range(0,1f);
+        if(buffRoll < .25f) { damage += (Random.Range(minDamageMod, maxDamageMod) * sign); }
+        else if (buffRoll < .5f) { swingTime -= (Random.Range(minSwingTimeMod, maxSwingTimeMod) * sign); }
+        else if (buffRoll < .75f) { critChance += (Random.Range(minCritChanceMod, maxCritChanceMod) * sign); }
+        else { maxDurability += (Random.Range(minDurabilityMod, maxDurabilityMod) * sign);
+            currDurability = maxDurability; }
+        value += sign;
     }
 }

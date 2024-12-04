@@ -139,18 +139,21 @@ public static class SaveLoad {
         return defaultValue;
     }
 
-    public static int[] LoadIntList(string key, int defaultValue = 0) {
+    public static int[] LoadIntList(string key, int defaultValue = -1) {
         if(dataDict.TryGetValue(key, out string value)) {
             string[] components = value.Split(',');
             int[] ints = new int[components.Length];
             for(int i = 0; i < ints.Length; i++) {
                 if(!int.TryParse(components[i], out ints[i])) {
                     continue;
+                } else {
+                    ints[i] = defaultValue;
                 }
             }
             return ints;
         }
-        int[] empty = new int[defaultValue];
+        int[] empty = new int[1];
+        empty[0] = defaultValue;
         return empty;
     }
 }

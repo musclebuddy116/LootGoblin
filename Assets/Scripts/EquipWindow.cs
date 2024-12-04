@@ -28,7 +28,7 @@ public class EquipWindow : MonoBehaviour
             return;
         }
         equipImage.sprite = weapon.GetComponent<SpriteRenderer>().sprite;
-        equipText.text = "Equipped weapon:\n  " + weapon.GetName()[..^7] + "\nDamage: " + weapon.GetDamage().ToString();
+        equipText.text = "Equipped weapon:\n  " + weapon.GetName() + "\nDamage: " + weapon.GetDamage().ToString("F2");
         float durability = weapon.GetDurability();
         float maxDurability = weapon.GetMaxDurability();
         float fraction = durability/maxDurability;

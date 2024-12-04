@@ -7,7 +7,7 @@ public class Item : MonoBehaviour
 {
     int id = -1;
     // int identifier = -1;
-    [SerializeField] protected int value = 1;
+    [SerializeField] protected int value = 5;
     [SerializeField] float dropChance = .01f;
 
     public void SetId(int id) {
@@ -20,7 +20,7 @@ public class Item : MonoBehaviour
     }
     
     public String GetName() {
-        return name;
+        return name[..^7];
     }
 
     public int GetValue() {

@@ -47,7 +47,7 @@ public class MonsterAI : MonoBehaviour
         if(stateTime == 0) {
             currStateString = "IdleState";
         }
-        //moving = false;
+        monster.Stop();
         if(CanSeeTarget()) {
             ChangeState(ChaseState);
             return;

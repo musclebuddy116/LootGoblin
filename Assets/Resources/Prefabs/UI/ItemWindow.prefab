@@ -569,6 +569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273b2df4e0e236349945d1ee17fd824a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 3395863720905292254}
   itemText: {fileID: 5763450673194310496}
   item: {fileID: 0}
+  imagePrefab: {fileID: 8461302428677484509, guid: 37576e76221729847bca785f5af37c96, type: 3}

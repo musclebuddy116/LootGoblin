@@ -32,8 +32,6 @@ Transform:
   m_Children:
   - {fileID: 8793132081306231920}
   - {fileID: 8963145358132575645}
-  - {fileID: 6960227726681807238}
-  - {fileID: 1950046989524210492}
   - {fileID: 7372608734637772656}
   - {fileID: 6125700314649663864}
   - {fileID: 7192471588050064064}
@@ -231,6 +229,8 @@ Transform:
   - {fileID: 4616505833082173103}
   - {fileID: 6210549913771625667}
   - {fileID: 2687562418230318776}
+  - {fileID: 9058841414890552234}
+  - {fileID: 5351236757582903691}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5808988956003201742
@@ -252,6 +252,7 @@ MonoBehaviour:
   southExit: 0
   westExit: 0
   exits: 00010000
+  chests: []
 --- !u!1001 &75074392072240916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -313,6 +314,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1961630369269668181, guid: 8e747c2982d9f9b4ba4c873d517c10e0, type: 3}
   m_PrefabInstance: {fileID: 75074392072240916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &90147185640061258
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1457454247049593265}
+    m_Modifications:
+    - target: {fileID: 1608490269213900315, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_Name
+      value: Dungeon Tiles v3-7.png (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.49945
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4994516
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.024149712
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+--- !u!4 &9058841414890552234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9004732114439389920, guid: dff2a921856c91e4b92ab628b069ba26, type: 3}
+  m_PrefabInstance: {fileID: 90147185640061258}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &93337565043562405
 PrefabInstance:
@@ -2492,68 +2555,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8379744363249669029, guid: c9e9a3c1558b1924287f477e0c4b5595, type: 3}
   m_PrefabInstance: {fileID: 1588229967906342887}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1628574355641548986
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1457454247049593265}
-    m_Modifications:
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.500275
-      objectReference: {fileID: 0}
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.4994507
-      objectReference: {fileID: 0}
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.038884856
-      objectReference: {fileID: 0}
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2936419975281476999, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-      propertyPath: m_Name
-      value: Dungeon Tiles v3-2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
---- !u!4 &1950046989524210492 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 979021477732569990, guid: 3c2d3824e09514a43afc20af72cdf117, type: 3}
-  m_PrefabInstance: {fileID: 1628574355641548986}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1674038462546024924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3731,68 +3732,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
   m_PrefabInstance: {fileID: 2491151135389015868}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &2498944576705075490
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1457454247049593265}
-    m_Modifications:
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.500275
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.4994507
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.038884856
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6292430672134486225, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-      propertyPath: m_Name
-      value: Dungeon Tiles v3-3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
---- !u!4 &6960227726681807238 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
-  m_PrefabInstance: {fileID: 2498944576705075490}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2517310939185233235
 PrefabInstance:
@@ -8071,6 +8010,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4772050784350404772, guid: 602538deaf73fd84e9943d42d9ae2522, type: 3}
   m_PrefabInstance: {fileID: 5369421297546673652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5384697932539935929
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1457454247049593265}
+    m_Modifications:
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.499451
+      objectReference: {fileID: 0}
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.4994507
+      objectReference: {fileID: 0}
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.024149712
+      objectReference: {fileID: 0}
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6765088689721547719, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+      propertyPath: m_Name
+      value: Dungeon Tiles v3-8.png (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+--- !u!4 &5351236757582903691 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 70126057577989426, guid: e4a4d3f25d0daa844b437e67ff5d7e1e, type: 3}
+  m_PrefabInstance: {fileID: 5384697932539935929}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5428214913016839202
 PrefabInstance:

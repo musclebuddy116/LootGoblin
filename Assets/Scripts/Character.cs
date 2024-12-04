@@ -25,6 +25,7 @@ public class Character : MonoBehaviour
     [SerializeField] float attackCooldownTime = .5f;
     [SerializeField] float dodgeCooldownTime = .25f;
     [SerializeField] float windupTime = .2f;
+    [SerializeField] float deathFadeTime = 1;
 
     [Header("Movement")]
     [SerializeField] float speed = 3;
@@ -42,6 +43,12 @@ public class Character : MonoBehaviour
     bool dodgeCooldown = false;
     bool windingUp = false;
     bool invincible = false;
+    bool dead = false;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource owAudioSource;
+    [SerializeField] AudioSource deathAudioSource;
+    [SerializeField] AudioSource monsterAttackAudioSource;
 
 
     void Awake()
@@ -139,6 +146,7 @@ public class Character : MonoBehaviour
         IEnumerator WindUpRoutine() {
             weapon.transform.rotation = aimerTransform.rotation;
             float timer = 0;
+            monsterAttackAudioSource.Play();
             while(timer < windupTime/2) {
                 timer += Time.deltaTime;
                 weapon.transform.Rotate(new Vector3(0,0,Time.deltaTime/(windupTime/2) * 60));
@@ -175,6 +183,7 @@ public class Character : MonoBehaviour
             weapon.CanDamage(true);
             float timer = 0;
             // Quaternion baseRotation = weapon.transform.rotation;
+            weapon.Swing();
             while(timer < weapon.GetSpeed()) {
                 timer += Time.deltaTime;
                 weapon.transform.Rotate(new Vector3(0,0,Time.deltaTime/weapon.GetSpeed() * -135));
@@ -266,7 +275,7 @@ public class Character : MonoBehaviour
     }*/
 
     public void TakeDamage(float damage) {
-        if(invincible) {
+        if(invincible || dead) {
             return;
         }
         currHealth -= damage;
@@ -276,6 +285,8 @@ public class Character : MonoBehaviour
 
         if(currHealth <= 0) {
             Die();
+        } else {
+            owAudioSource.Play();
         }
     }
 
@@ -285,13 +296,26 @@ public class Character : MonoBehaviour
     }
 
     void Die() {
-        if(this.CompareTag("Player")) {
-            DungeonManager.singleton.PlayerDead();
-            return;
+        deathAudioSource.Play();
+        dead = true;
+        StartCoroutine(DieCoroutine());
+        IEnumerator DieCoroutine() {
+            float timer = 0;
+            Color color = body.GetComponent<SpriteRenderer>().color;
+            while(timer < deathFadeTime) {
+                timer += Time.deltaTime;
+                body.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, 1-timer/deathFadeTime);
+                yield return null;
+            }
+            Destroy(this.gameObject);
+            if(this.CompareTag("Player")) {
+                DungeonManager.singleton.PlayerDead();
+            }
+            if(this.CompareTag("Monster")) {
+                DungeonManager.singleton.GrantCoins(Random.Range(minAwardCoins, maxAwardCoins + 1));
+                DungeonManager.singleton.MonsterDead();
+            }
         }
-        DungeonManager.singleton.GrantCoins(Random.Range(minAwardCoins, maxAwardCoins + 1));
-        DungeonManager.singleton.MonsterDead();
-        Destroy(this.gameObject);
     }
     
     public Inventory GetInventory() {
@@ -303,11 +327,11 @@ public class Character : MonoBehaviour
     }
 
     public bool CanAttack() {
-        return !attacking && !attackCooldown && !dodging && !windingUp && weapon != null;
+        return !attacking && !attackCooldown && !dodging && !windingUp && weapon != null && !dead;
     }
 
     public bool CanDodge() {
-        return !dodging && !dodgeCooldown && !(movement == Vector3.zero) && !attacking;
+        return !dodging && !dodgeCooldown && !(movement == Vector3.zero) && !attacking && !dead;
     }
 
     public bool IsAttacking() {
