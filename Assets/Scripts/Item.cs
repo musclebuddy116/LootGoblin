@@ -9,10 +9,16 @@ public class Item : MonoBehaviour
     // int identifier = -1;
     [SerializeField] protected int value = 5;
     [SerializeField] float dropChance = .01f;
+    protected Inventory myInventory;
 
     public void SetId(int id) {
         this.id = id;
         // identifier = ItemManager.singleton.Identify();
+    }
+
+    public void SetInventory(Inventory inventory) {
+        transform.SetParent(inventory.transform);
+        myInventory = inventory;
     }
 
     public int GetId() {

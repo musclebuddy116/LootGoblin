@@ -1,2 +1,2 @@
-playerItems=-1
-playerCoins=0
+playerItems=0,1,2
+playerCoins=58

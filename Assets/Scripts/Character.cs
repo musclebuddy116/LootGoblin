@@ -197,12 +197,13 @@ public class Character : MonoBehaviour
             //     enemy.GetComponent<Character>().TakeDamage(weapon.GetDamage());
             // }*/
             weapon.GetTrail().emitting = false;
+            weapon.GetParticle().Stop();
             weapon.CanDamage(false);
-            if(weapon.GetDurability() <= 0) {
-                inventory.RemoveItem(weapon);
-                inventory.EquipNextWeapon(1);
-                weapon.gameObject.SetActive(false);
-                Destroy(weapon.gameObject,0.5f);
+            if(weapon == null || weapon.IsBroken()) {
+                // inventory.EquipNextWeapon(1);
+                // weapon.Break();
+                // weapon.gameObject.SetActive(false);
+                // Destroy(weapon.gameObject,0.5f);
                 weapon = inventory.GetCurrWeapon();
             }
             

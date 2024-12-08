@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
       value: 0.2185
       objectReference: {fileID: 0}
+    - target: {fileID: 1811272396068389088, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.375
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811272396068389088, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.343625
+      objectReference: {fileID: 0}
     - target: {fileID: 2933707268649306191, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
       propertyPath: m_Sprite
       value: 

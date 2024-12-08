@@ -16,10 +16,14 @@ public class Weapon : Item
 
     [SerializeField] LayerMask enemyLayers;
     [SerializeField] TrailRenderer trail;
+    [SerializeField] ParticleSystem particleSystem;
     bool canDamage = false;
+    bool broken = false;
     
     [Header("Audio")]
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioSource swingAudioSource;
+    [SerializeField] AudioSource critAudioSource;
+    [SerializeField] AudioSource breakAudioSource;
 
     [Header("ProceduralGeneration")]
     [SerializeField] float minDamageMod = 1;
@@ -48,7 +52,22 @@ public class Weapon : Item
     }
 
     public void Swing() {
-        audioSource.Play();
+        swingAudioSource.Play();
+    }
+
+    public void Break() {
+        breakAudioSource.Play();
+        // gameObject.SetActive(false);
+        GetComponent<SpriteRenderer>().enabled = false;
+        trail.emitting = false;
+        broken = true;
+        myInventory.RemoveItem(this);
+        // myInventory.EquipNextWeapon(1);
+        Destroy(this.gameObject,2f);
+    }
+
+    public bool IsBroken() {
+        return broken;
     }
 
     public void CanDamage(bool can) {
@@ -63,12 +82,25 @@ public class Weapon : Item
             }
             Character c = other.GetComponent<Character>();
             float dmg = damage;
-            if(Random.Range(0, 1f) < critChance) { dmg *= 2; }
+            if(Random.Range(0, 1f) < critChance) {
+                dmg *= 2;
+                particleSystem.Play();
+                critAudioSource.Play();
+            }
             c.TakeDamage(dmg);
             CanDamage(false);
             UseDurability();
+            if(currDurability <=0 ) {
+                Break();
+            }
         }
     }
+
+    void OnDestroy()
+    {
+        particleSystem.Stop();
+    }
+
     /*void OnTriggerEnter2D(Collider2D other)
     {
         if((enemyLayers.value & (1 << other.gameObject.layer)) != 0) {
@@ -93,6 +125,10 @@ public class Weapon : Item
 
     public TrailRenderer GetTrail() {
         return trail;
+    }
+
+    public ParticleSystem GetParticle() {
+        return particleSystem;
     }
 
     public void UseDurability() {

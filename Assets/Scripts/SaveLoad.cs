@@ -146,8 +146,6 @@ public static class SaveLoad {
             for(int i = 0; i < ints.Length; i++) {
                 if(!int.TryParse(components[i], out ints[i])) {
                     continue;
-                } else {
-                    ints[i] = defaultValue;
                 }
             }
             return ints;

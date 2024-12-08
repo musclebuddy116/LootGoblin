@@ -41,6 +41,9 @@ public class Inventory : MonoBehaviour
         if(weaponCount == 0) {
             return null;
         }
+        if(currWeaponIndex >= items.Count) {
+            currWeaponIndex = 0;
+        }
         while(items[currWeaponIndex].GetType() != typeof(Weapon)) {
             // currWeaponIndex = ++currWeaponIndex % items.Count;
             EquipNextWeapon(1);
@@ -70,7 +73,8 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item) {
         items.Add(item);
-        item.transform.SetParent(this.transform);
+        // item.transform.SetParent(this.transform);
+        item.SetInventory(this);
         if(item.GetType() == typeof(Weapon)) {
             weaponCount++;
         }
@@ -162,6 +166,8 @@ public class Inventory : MonoBehaviour
         int[] ids = SaveLoad.LoadIntList(key);
         int i;
         if(ids.Length == 0 || ids[0] == -1) {
+            Debug.Log("ids.Length: " + ids.Length);
+            Debug.Log("ids[0]: " + ids[0]);
             return;
         }
         // int i;
@@ -197,13 +203,16 @@ public class Inventory : MonoBehaviour
         if(weaponCount == 0) {
             return;
         }
+        if(currWeaponIndex >= items.Count) {
+            currWeaponIndex = 0;
+        }
         if(items[currWeaponIndex] != null) {
             items[currWeaponIndex].gameObject.SetActive(false);
         }
         for(int i = 0; i < Math.Abs(y); i++) {
             do {
                 currWeaponIndex = (currWeaponIndex + items.Count + (1 * y/Math.Abs(y))) % items.Count;
-            } while(items[currWeaponIndex].GetType() != typeof(Weapon));
+            } while(items[currWeaponIndex].GetType() != typeof(Weapon) || ((Weapon)items[currWeaponIndex]).IsBroken());
         }
         /*for(int i = 0; i < -y; i++) {
             do {

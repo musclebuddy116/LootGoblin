@@ -24,6 +24,9 @@ public class PlayerInputHandler : MonoBehaviour
             playerCharacter.Attack();
         }
         if(Input.mouseScrollDelta.y != 0) {
+            if(!playerCharacter.CanAttack()) {
+                return;
+            }
             playerCharacter.GetInventory().EquipNextWeapon((int)(Input.mouseScrollDelta.y * scale));
         }
     }

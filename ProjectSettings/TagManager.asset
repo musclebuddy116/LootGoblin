@@ -54,6 +54,9 @@ TagManager:
   - name: Weapons
     uniqueID: 1729480201
     locked: 0
+  - name: WeaponParticles
+    uniqueID: 1079126417
+    locked: 0
   - name: Sprites
     uniqueID: 3997160717
     locked: 0

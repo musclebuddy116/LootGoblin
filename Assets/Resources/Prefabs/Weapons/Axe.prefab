@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
       value: 0.325
       objectReference: {fileID: 0}
+    - target: {fileID: 1811272396068389088, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1811272396068389088, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.295
+      objectReference: {fileID: 0}
     - target: {fileID: 2933707268649306191, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -72,6 +80,18 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 034816bd8d7b833439d288c6c97867ca, type: 3}
+    - target: {fileID: 6073755247294479838, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073755247294479838, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073755247294479838, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1079126417
+      objectReference: {fileID: 0}
     - target: {fileID: 6876590335387764950, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
       propertyPath: m_Name
       value: Axe

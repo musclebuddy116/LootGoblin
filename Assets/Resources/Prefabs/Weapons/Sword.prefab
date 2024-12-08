@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: maxDurability
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -805556202681325762, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5349876291484370884, guid: 476bfb3d86bc28f41bde0f92ec4b5213, type: 3}
       propertyPath: m_audioClip
       value: 

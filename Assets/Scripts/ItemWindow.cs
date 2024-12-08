@@ -43,9 +43,6 @@ public class ItemWindow : MonoBehaviour
         this.item = Instantiate(item, pos, Quaternion.identity).GetComponent<Item>();
         this.item.SetId(itemID);
         this.item.gameObject.SetActive(false);
-        Image image = Instantiate(imagePrefab, pos, Quaternion.identity, this.transform).GetComponent<Image>();
-        image.sprite = item.GetComponent<SpriteRenderer>().sprite;
-        image.gameObject.SetActive(true);
         SetInformation();
     }
 
@@ -55,9 +52,6 @@ public class ItemWindow : MonoBehaviour
         this.item = Instantiate(ItemManager.singleton.GetItem(itemID), pos, Quaternion.identity).GetComponent<Item>();
         this.item.SetId(itemID);
         this.item.gameObject.SetActive(false);
-        Image image = Instantiate(imagePrefab, pos, Quaternion.identity, this.transform).GetComponent<Image>();
-        image.sprite = item.GetComponent<SpriteRenderer>().sprite;
-        image.gameObject.SetActive(true);
         SetInformation();
     }
 
@@ -65,14 +59,13 @@ public class ItemWindow : MonoBehaviour
         Vector3 pos = transform.position + new Vector3(0,30/108f,0);
         this.item = item;
         this.item.gameObject.SetActive(false);
-        Image image = Instantiate(imagePrefab, pos, Quaternion.identity, this.transform).GetComponent<Image>();
-        image.sprite = item.GetComponent<SpriteRenderer>().sprite;
-        image.gameObject.SetActive(true);
         SetInformation();
     }
 
     public void SetInformation() {
-        // SetImage(item.GetComponent<SpriteRenderer>().sprite);
+        Image image = Instantiate(imagePrefab, transform.position + new Vector3(0,30/108f,0), Quaternion.identity, this.transform).GetComponent<Image>();
+        image.sprite = item.GetComponent<SpriteRenderer>().sprite;
+        image.gameObject.SetActive(true);
         SetItemText(item.GetName(), item.GetValue());
     }
 

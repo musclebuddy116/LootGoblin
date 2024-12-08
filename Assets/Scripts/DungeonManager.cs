@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -10,7 +12,9 @@ public class DungeonManager : MonoBehaviour
     public static DungeonManager singleton;
 
     [SerializeField] Character playerCharacter;
+    [Header("Visual")]
     [SerializeField] ScreenFader dungeonScreenFader;
+    [SerializeField] Volume volume;
     
     [Header("Rooms")]
     [SerializeField] List<GameObject> roomPrefabs;
@@ -53,6 +57,12 @@ public class DungeonManager : MonoBehaviour
         playerCharacter.GetInventory().LoadItems(Strings.playerItemsString);
         playerCharacter.GetInventory().LoadCoins(Strings.playerCoinsString);
         EnterRoom(roomPrefabs[0], 0);
+        int arcadeModeToggleOption = PlayerPrefs.GetInt("ArcadeMode", 0);
+        if(arcadeModeToggleOption == 1) {
+            volume.weight = 1;
+        } else {
+            volume.weight = 0;
+        }
         // playerCharacter.transform.position = Vector3.zero;
         // currRoom = Instantiate(roomPrefabs[0], Vector3.zero, Quaternion.identity);
         // currRoomRoom = currRoom.GetComponent<Room>();
@@ -324,10 +334,10 @@ public class DungeonManager : MonoBehaviour
     }*/
 
     public void EnterRoom(GameObject room, int doorCardinal) {
-        /*if(playerCharacter.GetInventory().GetCoins() >= 10) {
+        if(playerCharacter.GetInventory().GetCoins() >= 100) {
             WinGame();
             return;
-        }*/
+        }
         Destroy(currRoom);
         rotations = 0;
         currRoomRoom = room.GetComponent<Room>();
