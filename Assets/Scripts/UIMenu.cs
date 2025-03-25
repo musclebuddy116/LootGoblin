@@ -21,10 +21,6 @@ public class UIMenu : MonoBehaviour
     
     public void OpenMenu() {
         GetComponent<Canvas>().enabled = true;
-        
-        //FIXME: Do not ship!!!
-        // PlayerPrefs.SetInt(Strings.newGame, 1);
-
 
     }
 

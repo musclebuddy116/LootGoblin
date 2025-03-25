@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -93,7 +93,7 @@ public class Randstats
         } while(Math.Abs(endTotal - startTotal) > .0001);
 
        Debug.Log("endTotal: " + endTotal);
-    }*/
+    }*\/
 
     public void Randomize(int seed) {
         Random.InitState(seed);
@@ -113,4 +113,4 @@ public class Randstats
         }
         Debug.Log("Final sum for size " + size + ": " + tempSum);
     }
-}
+}*/

@@ -14,11 +14,6 @@ public class ScreenFader : MonoBehaviour
     bool fading = false;
     bool doneFadingToColor = false;
     
-    void Awake()
-    {
-
-    }
-    
     // Start is called before the first frame update
     void Start()
     {

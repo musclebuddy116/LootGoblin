@@ -48,10 +48,6 @@ public class DungeonManager : MonoBehaviour
         Random.InitState(seed);
     }
 
-    // public void RegisterRoom(Room r) {
-    //     rooms.Add(r);
-    // }
-    // Start is called before the first frame update
     void Start()
     {
         playerCharacter.GetInventory().LoadItems(Strings.playerItemsString);
@@ -63,10 +59,6 @@ public class DungeonManager : MonoBehaviour
         } else {
             volume.weight = 0;
         }
-        // playerCharacter.transform.position = Vector3.zero;
-        // currRoom = Instantiate(roomPrefabs[0], Vector3.zero, Quaternion.identity);
-        // currRoomRoom = currRoom.GetComponent<Room>();
-        //RollRoom();
         
     }
 
@@ -74,49 +66,9 @@ public class DungeonManager : MonoBehaviour
         int i;
         for(i = 0; i < 4; i++) {
             rooms[(i + 4 - rotations) % 4] = (currRoomRoom.GetExit(i)) ? roomPrefabs[Random.Range(1, roomPrefabs.Count)] : null;
-            /*if(currRoomRoom.GetExit(i)) {
-                rooms[(i + 4 - rotations) % 4] = roomPrefabs[Random.Range(1, roomPrefabs.Count)];
-            } else {
-                rooms[(i + 4 - rotations) % 4] = null;
-            }*/
         }
-        /*if(currRoomRoom.GetNorthExit()) {
-            rooms[(0 + 4 - rotations) % 4] = roomPrefabs[Random.Range(1, roomPrefabs.Count)];
-        } else {  rooms[(0 + 4 - rotations) % 4] = null;  }
-        if(currRoomRoom.GetEastExit()) {
-            rooms[(1 + 4 - rotations) % 4] = roomPrefabs[Random.Range(1, roomPrefabs.Count)];
-        } else {  rooms[(1 + 4 - rotations) % 4] = null;  }
-        if(currRoomRoom.GetSouthExit()) {
-            rooms[(2 + 4 - rotations) % 4] = roomPrefabs[Random.Range(1, roomPrefabs.Count)];
-        } else {  rooms[(2 + 4 - rotations) % 4] = null;  }
-        if(currRoomRoom.GetWestExit()) {
-            rooms[(3 + 4 - rotations) % 4] = roomPrefabs[Random.Range(1, roomPrefabs.Count)];
-        } else {  rooms[(3 + 4 - rotations) % 4] = null;  }*/
-        /*// if(currRoomRoom.GetNorthExit()) {
-        //     northRoom = roomPrefabs[Random.Range(1, roomPrefabs.Count)];
-        //     northRoomRoom = northRoom.GetComponent<Room>();
-        // } else {  northRoom = null; northRoomRoom = null;  }
-        // if(currRoomRoom.GetEastExit()) {
-        //     eastRoom = roomPrefabs[Random.Range(1, roomPrefabs.Count)];
-        //     eastRoomRoom = eastRoom.GetComponent<Room>();
-        // } else {  eastRoom = null; eastRoomRoom = null;  }
-        // if(currRoomRoom.GetSouthExit()) {
-        //     southRoom = roomPrefabs[Random.Range(1, roomPrefabs.Count)];
-        //     southRoomRoom = southRoom.GetComponent<Room>();
-        // } else {  southRoom = null; southRoomRoom = null;  }
-        // if(currRoomRoom.GetWestExit()) {
-        //     westRoom = roomPrefabs[Random.Range(1, roomPrefabs.Count)];
-        //     westRoomRoom = westRoom.GetComponent<Room>();
-        // } else {  westRoom = null; westRoomRoom = null;  }*/
 
     }
-
-    /*public void RegisterDoorCardinal(DoorTrigger.DoorCardinal doorCardinal) {
-        // if(doorCardinal == DoorTrigger.DoorCardinal.North)  {   currRoomRoom.SetNorthExit(true);    }
-        // if(doorCardinal == DoorTrigger.DoorCardinal.East)   {   currRoomRoom.SetEastExit(true);     }
-        // if(doorCardinal == DoorTrigger.DoorCardinal.South)  {   currRoomRoom.SetSouthExit(true);    }
-        // if(doorCardinal == DoorTrigger.DoorCardinal.West)   {   currRoomRoom.SetWestExit(true);     }
-    }*/
 
     public void RegisterMonster() {
         currRoomRoom.RegisterMonster();
@@ -139,11 +91,6 @@ public class DungeonManager : MonoBehaviour
     public void WinGame() {
         SceneManager.LoadScene("WinScreen");
     }
-
-    /*public void SetAtDoor(DoorTrigger.DoorCardinal doorCardinal, bool isAtDoor) {
-        atDoorCardinal = doorCardinal;
-        playerAtDoor = isAtDoor;
-    }*/
 
     public void SetAtDoor(int doorCardinal, bool isAtDoor) {
         atDoor = (doorCardinal + 4 - rotations) % 4;
@@ -170,168 +117,12 @@ public class DungeonManager : MonoBehaviour
         exiting = true;
         currRoomRoom.ClearChests();
         EnterRoom(rooms[atDoor], atDoor);
-        /*switch(atDoor) {
-            case 0:
-                //EnterRoom(northRoom, atDoorCardinal);
-                EnterRoom(rooms[0], 0);
-                break;
-            case 1:
-                //EnterRoom(eastRoom, atDoorCardinal);
-                EnterRoom(rooms[1], 1);
-                break;
-            case 2:
-                //EnterRoom(southRoom, atDoorCardinal);
-                EnterRoom(rooms[2], 2);
-                break;
-            case 3:
-                //EnterRoom(westRoom, atDoorCardinal);
-                EnterRoom(rooms[3], 3);
-                break;
-        }*/
-        /*switch(atDoorCardinal) {
-            case DoorTrigger.DoorCardinal.North:
-                //EnterRoom(northRoom, atDoorCardinal);
-                EnterRoom(rooms[0], atDoorCardinal);
-                break;
-            case DoorTrigger.DoorCardinal.East:
-                //EnterRoom(eastRoom, atDoorCardinal);
-                EnterRoom(rooms[1], atDoorCardinal);
-                break;
-            case DoorTrigger.DoorCardinal.South:
-                //EnterRoom(southRoom, atDoorCardinal);
-                EnterRoom(rooms[2], atDoorCardinal);
-                break;
-            case DoorTrigger.DoorCardinal.West:
-                //EnterRoom(westRoom, atDoorCardinal);
-                EnterRoom(rooms[3], atDoorCardinal);
-                break;
-        }*/
         exiting = false;
     }
 
     void OpenChest(TreasureChest chest) {
         chest.Open(playerCharacter);
     }
-
-    /*public void EnterRoom(GameObject room, DoorTrigger.DoorCardinal doorCardinal) {
-        Destroy(currRoom);
-        rotations = 0;
-        Vector3 playerPos = Vector3.zero;
-        currRoomRoom = room.GetComponent<Room>();
-        switch(doorCardinal) {
-            case DoorTrigger.DoorCardinal.North:
-                playerPos = new Vector3(0,-3.5f,0);
-                if(!currRoomRoom.GetSouthExit()) {
-                    if(currRoomRoom.GetWestExit()) {
-                        rotations = 1;
-                    } else if(currRoomRoom.GetNorthExit()) {
-                        rotations = 2;
-                    } else if(currRoomRoom.GetEastExit()) {
-                        rotations = 3;
-                    }
-                }
-                break;
-            case DoorTrigger.DoorCardinal.East:
-                playerPos = new Vector3(-3.5f,0,0);
-                if(!currRoomRoom.GetWestExit()) {
-                    if(currRoomRoom.GetNorthExit()) {
-                        rotations = 1;
-                    } else if(currRoomRoom.GetEastExit()) {
-                        rotations = 2;
-                    } else if(currRoomRoom.GetSouthExit()) {
-                        rotations = 3;
-                    }
-                }
-                break;
-            case DoorTrigger.DoorCardinal.South:
-                playerPos = new Vector3(0,3.5f,0);
-                if(!currRoomRoom.GetNorthExit()) {
-                    if(currRoomRoom.GetEastExit()) {
-                        rotations = 1;
-                    } else if(currRoomRoom.GetSouthExit()) {
-                        rotations = 2;
-                    } else if(currRoomRoom.GetWestExit()) {
-                        rotations = 3;
-                    }
-                }
-                break;
-            case DoorTrigger.DoorCardinal.West:
-                playerPos = new Vector3(3.5f,0,0);
-                if(!currRoomRoom.GetEastExit()) {
-                    if(currRoomRoom.GetSouthExit()) {
-                        rotations = 1;
-                    } else if(currRoomRoom.GetWestExit()) {
-                        rotations = 2;
-                    } else if(currRoomRoom.GetNorthExit()) {
-                        rotations = 3;
-                    }
-                }
-                break;
-        }
-        playerCharacter.transform.position = playerPos;
-        currRoom = Instantiate(room, Vector3.zero, Quaternion.Euler(0,0,90*rotations));
-        RollRoom();
-    }*/
-
-    /*public void EnterRoom(GameObject room, int doorCardinal) {
-        Destroy(currRoom);
-        rotations = 0;
-        Vector3 playerPos = Vector3.zero;
-        currRoomRoom = room.GetComponent<Room>();
-        switch(doorCardinal) {
-            case 0:
-                playerPos = new Vector3(0,-3.5f,0);
-                if(!currRoomRoom.GetSouthExit()) {
-                    if(currRoomRoom.GetWestExit()) {
-                        rotations = 1;
-                    } else if(currRoomRoom.GetNorthExit()) {
-                        rotations = 2;
-                    } else if(currRoomRoom.GetEastExit()) {
-                        rotations = 3;
-                    }
-                }
-                break;
-            case 1:
-                playerPos = new Vector3(-3.5f,0,0);
-                if(!currRoomRoom.GetWestExit()) {
-                    if(currRoomRoom.GetNorthExit()) {
-                        rotations = 1;
-                    } else if(currRoomRoom.GetEastExit()) {
-                        rotations = 2;
-                    } else if(currRoomRoom.GetSouthExit()) {
-                        rotations = 3;
-                    }
-                }
-                break;
-            case 2:
-                playerPos = new Vector3(0,3.5f,0);
-                if(!currRoomRoom.GetNorthExit()) {
-                    if(currRoomRoom.GetEastExit()) {
-                        rotations = 1;
-                    } else if(currRoomRoom.GetSouthExit()) {
-                        rotations = 2;
-                    } else if(currRoomRoom.GetWestExit()) {
-                        rotations = 3;
-                    }
-                }
-                break;
-            case 3:
-                playerPos = new Vector3(3.5f,0,0);
-                if(!currRoomRoom.GetEastExit()) {
-                    if(currRoomRoom.GetSouthExit()) {
-                        rotations = 1;
-                    } else if(currRoomRoom.GetWestExit()) {
-                        rotations = 2;
-                    } else if(currRoomRoom.GetNorthExit()) {
-                        rotations = 3;
-                    }
-                }
-                break;
-        }
-        playerCharacter.transform.position = playerPos;
-        currRoom = Instantiate(room, Vector3.zero, Quaternion.Euler(0,0,90*rotations));
-        RollRoom();
-    }*/
 
     public void EnterRoom(GameObject room, int doorCardinal) {
         if(playerCharacter.GetInventory().GetCoins() >= 100) {
@@ -353,15 +144,6 @@ public class DungeonManager : MonoBehaviour
                 break;
             }
         }
-        /*if(!currRoomRoom.GetExit((doorCardinal + 2) % 4)) {
-            if(currRoomRoom.GetExit((doorCardinal + 3) % 4)) {
-                rotations = 1;
-            } else if(currRoomRoom.GetExit((doorCardinal + 4) % 4)) {
-                rotations = 2;
-            } else if(currRoomRoom.GetExit((doorCardinal + 5) % 4)) {
-                rotations = 3;
-            }
-        }*/
         playerCharacter.transform.position = playerPos;
         currRoom = Instantiate(room, Vector3.zero, Quaternion.Euler(0,0,90*rotations));
         currRoomRoom = currRoom.GetComponent<Room>();
@@ -379,8 +161,4 @@ public class DungeonManager : MonoBehaviour
     public GameObject GetCurrRoom() {
         return currRoom;
     }
-
-    // public void LeaveRoom() {
-        
-    // }
 }

@@ -18,7 +18,6 @@ public class PlayerInputHandler : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.E)) {
             DungeonManager.singleton.Interact();
-            // DungeonManager.singleton.ExitRoom();
         }
         if(Input.GetMouseButtonDown(0)) {
             playerCharacter.Attack();

@@ -9,7 +9,7 @@ public class Weapon : Item
     [SerializeField] float damage = 5;
     // [SerializeField] float range = .35f;
     [SerializeField] float swingTime = .5f;
-    [SerializeField] float knockback = 1;
+    // [SerializeField] float knockback = 1;
     [SerializeField] float critChance = .05f;
     [SerializeField] float maxDurability = 10;
     [SerializeField] float currDurability = 10;
@@ -41,11 +41,6 @@ public class Weapon : Item
     // public float GetRange() {  return range;  }
     public float GetSpeed() {  return swingTime;  }
 
-    // void Start()
-    // {
-    //     currDurability = maxDurability;
-    // }
-
     void Awake()
     {
         currDurability = maxDurability;
@@ -57,12 +52,10 @@ public class Weapon : Item
 
     public void Break() {
         breakAudioSource.Play();
-        // gameObject.SetActive(false);
         GetComponent<SpriteRenderer>().enabled = false;
         trail.emitting = false;
         broken = true;
         myInventory.RemoveItem(this);
-        // myInventory.EquipNextWeapon(1);
         Destroy(this.gameObject,2f);
     }
 
@@ -101,24 +94,6 @@ public class Weapon : Item
         particleSystem.Stop();
     }
 
-    /*void OnTriggerEnter2D(Collider2D other)
-    {
-        if((enemyLayers.value & (1 << other.gameObject.layer)) != 0) {
-            if(!canDamage) {
-                return;
-            }
-            Character c = other.GetComponent<Character>();
-            float dmg = damage;
-            if(Random.Range(0, 1f) < critChance) { dmg *= 2; }
-            c.TakeDamage(dmg);
-            UseDurability();
-            CanDamage(false);
-        }
-        // if(other.CompareTag("Monster")) {
-            
-        // }
-    }*/
-
     public void SetEnemyLayers(LayerMask enemyLayers) {
         this.enemyLayers = enemyLayers;
     }
@@ -141,17 +116,6 @@ public class Weapon : Item
 
     public float GetDurability() {
         return currDurability;
-    }
-
-    public void Debuff() {
-        //Lowers a stat, with even chance to hit each stat, by a random amount
-        //Damage, speed, knockback, crit chance, durability
-        /*float debuffRoll = Random.Range(0,1f);
-        if(debuffRoll < .2f) { //Debuff damage
-            if(debuffRoll < .02f) { damage *= .7f ; }
-            else if (debuffRoll < .1f) { damage *= .8f ; }
-            else { damage *= .9f ; }
-        }*/
     }
 
     /// <summary>

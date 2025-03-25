@@ -55,12 +55,7 @@ public class MonsterAI : MonoBehaviour
     }
 
     void ChaseState() {
-        //moving = true;
-        //moveToward = playerCharacter.transform.position;
-        
-        //
         monster.MoveToward(playerCharacter.transform.position);
-        //
 
         monster.AimWeapon(playerCharacter.transform);
         if(stateTime == 0) {
@@ -68,12 +63,9 @@ public class MonsterAI : MonoBehaviour
         }
 
         if(Vector3.Distance(monster.transform.position, playerCharacter.transform.position) < meleeDistance) {
-            //monster.MoveToward(moveToward);
             ChangeState(AttackState);
             return;
-            // monster.Attack();
         }
-        //ATTACK
 
         if(!CanSeeTarget()) {
             ChangeState(IdleState);
@@ -86,7 +78,6 @@ public class MonsterAI : MonoBehaviour
             currStateString = "AttackState";
         }
         monster.Stop();
-        // monster.AimWeapon(playerCharacter.transform);
         monster.QuickAim(playerCharacter.transform);
         if(!monster.CanAttack()) {
             return;
@@ -105,13 +96,6 @@ public class MonsterAI : MonoBehaviour
         }
         currState();
         stateTime += Time.deltaTime;
-    }
-
-    void FixedUpdate()
-    {
-        /*if(moving) {
-            monster.MoveToward(moveToward);
-        }*/
     }
     
     // Update is called once per frame

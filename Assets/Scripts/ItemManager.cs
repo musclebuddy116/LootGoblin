@@ -14,7 +14,6 @@ public class ItemManager : MonoBehaviour
     [SerializeField] float uniqueChance;
     [SerializeField] float debuffChance = .25f;
     [SerializeField] float buffChance = .3f;
-    //[SerializeField] int[,] lootTable; //Here's the thought: Every loot source will award its own gold, and then I'll roll on the loot table for rarity of loot, then find a thing accordingly.
     
 
     void Awake()

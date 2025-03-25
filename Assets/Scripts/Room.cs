@@ -18,18 +18,6 @@ public class Room : MonoBehaviour
     [Header("Chests")]
     [SerializeField] List<TreasureChest> chests;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void RegisterMonster() {
         monsterCount += 1;
     }
@@ -45,16 +33,7 @@ public class Room : MonoBehaviour
     public void MonsterDead() {
         monsterCount -= 1;
     }
-
-    /*public void SetNorthExit(bool b)    {   northExit = b;  }
-    public void SetEastExit(bool b)     {   eastExit = b;   }
-    public void SetSouthExit(bool b)    {   southExit = b;  }
-    public void SetWestExit(bool b)     {   westExit = b;   }*/
-
-    public bool GetNorthExit()    {   return northExit;   }
-    public bool GetEastExit()     {   return eastExit;    }
-    public bool GetSouthExit()    {   return southExit;   }
-    public bool GetWestExit()     {   return westExit;    }
+    
     public bool GetExit(int exit) {
         return exits[exit];
     }

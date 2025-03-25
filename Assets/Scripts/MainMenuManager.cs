@@ -13,7 +13,6 @@ public class MainMenuManager : MonoBehaviour
 
     IEnumerator DelayLeaveMenuAfterFade() {
         yield return new WaitUntil(()=>mainMenuScreenFader.DoneFadingToColor());
-        // SceneManager.LoadScene("Dungeon");
         int newGame = PlayerPrefs.GetInt(Strings.newGame);
         if(newGame < 2) {
             PlayerPrefs.SetInt(Strings.newGame, 2);

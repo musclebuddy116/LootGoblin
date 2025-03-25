@@ -12,30 +12,14 @@ public class DoorTrigger : MonoBehaviour
     {
         //THIS ASSUMES THAT DOOR IS ONLY EVER ONE CARDINAL DIRECTION
         if((int)transform.localPosition.y > 0) {
-            //myCardinal = DoorCardinal.North;
             myCardinalInt = 0;
         } else if((int)transform.localPosition.x > 0) {
-            //myCardinal = DoorCardinal.East;
             myCardinalInt = 1;
         } else if((int)transform.localPosition.y < 0) {
-            //myCardinal = DoorCardinal.South;
             myCardinalInt = 2;
         } else if((int)transform.localPosition.x < 0) {
-            //myCardinal = DoorCardinal.West;
             myCardinalInt = 3;
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //DungeonManager.singleton.RegisterDoorCardinal(myCardinal);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public bool GetAtDoor() {

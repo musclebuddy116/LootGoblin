@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
     [SerializeField] Transform body;
     [SerializeField] SpriteRenderer healthBarSprite;
     [SerializeField] Transform attackPoint;
-    [SerializeField] float attackRange = 0.5f;
+    // [SerializeField] float attackRange = 0.5f;
     [SerializeField] LayerMask enemyLayers;
     [SerializeField] Transform aimerTransform;
     [SerializeField] Inventory inventory;
@@ -21,7 +21,6 @@ public class Character : MonoBehaviour
     [Header("Stats")]
     [SerializeField] float maxHealth = 10;
     float currHealth;
-    // [SerializeField] float attackDamage = 5;
     [SerializeField] float attackCooldownTime = .5f;
     [SerializeField] float dodgeCooldownTime = .25f;
     [SerializeField] float windupTime = .2f;
@@ -73,9 +72,6 @@ public class Character : MonoBehaviour
     {
         if(!attacking && !attackCooldown) {
             weapon = inventory.GetCurrWeapon();
-            
-            // weapon.transform.rotation = aimerTransform.rotation;
-            // weapon.transform.Rotate(new Vector3(0,0,45));
         }
     }
 
@@ -113,9 +109,6 @@ public class Character : MonoBehaviour
         Quaternion currRotation = aimerTransform.rotation;
 
         aimerTransform.rotation = Quaternion.Lerp(currRotation, goalRotation, Time.deltaTime * rotationSpeed);
-        // goalRotation = aimerTransform.rotation;
-        // currRotation = weapon.transform.rotation;
-        // weapon.transform.rotation = Quaternion.Lerp(currRotation, goalRotation, Time.deltaTime * rotationSpeed);
         weapon.transform.rotation = aimerTransform.rotation;
     }
 
@@ -167,7 +160,6 @@ public class Character : MonoBehaviour
         if(!CanAttack()) {
             return;
         }
-        // weapon = inventory.GetCurrWeapon();
         StartCoroutine(AttackRoutine());
         IEnumerator AttackRoutine() {
             attacking = true;
@@ -175,52 +167,26 @@ public class Character : MonoBehaviour
             weapon.transform.position = attackPoint.position;
             weapon.transform.rotation = aimerTransform.rotation;
             weapon.transform.Rotate(new Vector3(0,0,45));
-            // weapon.transform.rotation = aimerTransform.rotation * Quaternion.Euler(0,0,22.5f);
-            
-            // weapon.gameObject.SetActive(true);
             
             weapon.GetTrail().emitting = true;
             weapon.CanDamage(true);
             float timer = 0;
-            // Quaternion baseRotation = weapon.transform.rotation;
             weapon.Swing();
             while(timer < weapon.GetSpeed()) {
                 timer += Time.deltaTime;
                 weapon.transform.Rotate(new Vector3(0,0,Time.deltaTime/weapon.GetSpeed() * -135));
-                // weapon.transform.rotation = baseRotation * Quaternion.Euler(0,0,timer/weapon.GetSpeed()*-135);
                 yield return null;
             }
-            // weapon.transform.rotation = baseRotation * Quaternion.Euler(0,0,-135);
-            /*//Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(weapon.transform.position, weapon.GetRange(), enemyLayers);
-
-            // foreach(Collider2D enemy in hitEnemies) {
-            //     enemy.GetComponent<Character>().TakeDamage(weapon.GetDamage());
-            // }*/
             weapon.GetTrail().emitting = false;
             weapon.GetParticle().Stop();
             weapon.CanDamage(false);
             if(weapon == null || weapon.IsBroken()) {
-                // inventory.EquipNextWeapon(1);
-                // weapon.Break();
-                // weapon.gameObject.SetActive(false);
-                // Destroy(weapon.gameObject,0.5f);
                 weapon = inventory.GetCurrWeapon();
             }
-            
-            // weapon.gameObject.SetActive(false);
             
             StartCoroutine(AttackCooldownRoutine());
             attacking = false;
         }
-
-        /*// weapon.transform.position = attackPoint.position;
-        // weapon.gameObject.SetActive(true);
-        // Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, weapon.GetRange(), enemyLayers);
-
-        // foreach(Collider2D enemy in hitEnemies) {
-        //     enemy.GetComponent<Character>().TakeDamage(weapon.GetDamage());
-        // }
-        // weapon.gameObject.SetActive(false);*/
     }
 
     IEnumerator AttackCooldownRoutine() {
@@ -233,8 +199,7 @@ public class Character : MonoBehaviour
             }
             yield return null;
         }
-        
-        // yield return new WaitForSeconds(attackCooldownTime);
+
         attackCooldown = false;
     }
     IEnumerator DodgeCooldownRoutine() {
@@ -267,22 +232,12 @@ public class Character : MonoBehaviour
         
     }
 
-    /*void OnDrawGizmosSelected()
-    {
-        if(attackPoint == null) {
-            return;
-        }
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-    }*/
-
     public void TakeDamage(float damage) {
         if(invincible || dead) {
             return;
         }
         currHealth -= damage;
         SetHealthBar();
-
-        //Play hurt animation??
 
         if(currHealth <= 0) {
             Die();
